@@ -97,31 +97,39 @@ async function editarLivro(id, nome, editora, resumo, id_autor){
             }
         })
     })
+
+    if(alteracao.status == 204){
+        alert("alteração feita com sucesso")
+        listarLivros()
+    }else{
+        console.log("alteração não foi feita devido ao erro: " + alteracao.status)
+    }
 }
 
-function formEditLivro(id){
+async function formEditLivro(id){
+    let livro = await fetch(`http://localhost:8080/livros/${id}`)
+    livro = await livro.json()
     criarModal()
     let modal = document.querySelector(".modal")
+
     modal.innerHTML = `
-        <form action="" id="formLivro">
-            <h2 style="text-align: center; margin-bottom: 10px;">Form de alteração de usuario</h2>
+        <form action="" id="formLivroEdit">
+            <h2 style="text-align: center; margin-bottom: 10px;">Form de alteração do livro <i>${livro.nome}</i></h2>
             <div class="form-item">
-                <label for="nomeLivro">Nome</label>
-                <input type="text" name="nome" id="nomeLivro" placeholder="Digite seu nome">
+                <label for="nomeLivroModal">Nome</label>
+                <input type="text" name="nome" id="nomeLivroModal" value="${livro.nome}"  placeholder="Digite seu nome">
             </div>
             <div class="form-item">
-                <label for="editora">Editora</label>
-                <input type="text" name="editora" id="editora" placeholder="Digite sua editora">
+                <label for="editoraModal">Editora</label>
+                <input type="text" name="editora" id="editoraModal" value="${livro.editora}" placeholder="Digite sua editora">
             </div>
             <div class="form-item"> 
-                <label for="resumo">Resumo</label>
-                <input type="text" name="resumo" id="resumo" placeholder="Digite sua data de nascimento">
+                <label for="resumoModal">Resumo</label>
+                <input type="text" name="resumo" id="resumoModal" value="${livro.resumo}" placeholder="Digite sua data de nascimento">
             </div>
             <div class="form-item">
                 <label for="autor-modal"></label>
                 <select name="autor" id="autor-modal">
-                    <option value="cauan">cauan</option>
-                    <option value="teste">teste</option>
                 </select>
             </div>
 
@@ -129,6 +137,19 @@ function formEditLivro(id){
         </form>
     `
 
-    autoreSelectModal()
+    await autoreSelectModal()
+
+    document.querySelector("#autor-modal").value = livro.autor.id;
+
+    let formUpdate = document.getElementById("formLivroEdit")
+    formUpdate.addEventListener("submit", (e) => {
+        e.preventDefault()
+        let nome = document.getElementById("nomeLivroModal").value
+        let editora = document.getElementById("editoraModal").value
+        let resumo = document.getElementById("resumoModal").value
+        let autorID = document.getElementById("autor-modal").value
+
+        editarLivro(id, nome, editora, resumo, autorID)
+    })
 }
 

@@ -1,13 +1,17 @@
 let body = document.querySelector("body")
 
-function criarModal(){
-    body.innerHTML += `
-    <div class="fade" onclick="closeModal()"></div>
-    <div class="modal">
-        <p>FODASE</p>
-    </div>
-    `
+function criarModal() {
+    const fade = document.createElement("div")
+    fade.classList.add("fade")
+    fade.addEventListener("click", closeModal)
+  
+    const modal = document.createElement("div")
+    modal.classList.add("modal")
+  
+    document.body.appendChild(fade)
+    document.body.appendChild(modal)
 }
+  
 
 function closeModal(){
     let modal = document.querySelector(".modal")

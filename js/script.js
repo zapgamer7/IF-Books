@@ -1,20 +1,25 @@
-var crudAreas = [
+const crudAreas = [
     document.querySelector("#addAutor"),
     document.querySelector("#listAutor"),
     document.querySelector("#addBook"),
     document.querySelector("#listBook")
-]
-
-var active = 0
-
-function aparecer(crudArea){
-    if(crudAreas[crudArea].classList[0] == "hidden"){
-        crudAreas[crudArea].classList.add("active")  
-        crudAreas[crudArea].classList.remove("hidden")
-
-        crudAreas[active].classList.add("hidden")
-        crudAreas[active].classList.remove("active")
-        
-        active = crudArea
-    }
-}
+  ];
+  
+  let active = 0;
+  
+  function aparecer(index) {
+    const novoAtivo = crudAreas[index];
+    const anteriorAtivo = crudAreas[active];
+  
+    // Evita erro se o índice for inválido ou o elemento não existir
+    if (!novoAtivo || novoAtivo === anteriorAtivo) return;
+  
+    anteriorAtivo.classList.remove("active");
+    anteriorAtivo.classList.add("hidden");
+  
+    novoAtivo.classList.remove("hidden");
+    novoAtivo.classList.add("active");
+  
+    active = index;
+  }
+  
