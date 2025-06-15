@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD IF-Books</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/navBar.css">
+    <link rel="stylesheet" href="css/addAutor.css">
+    <link rel="stylesheet" href="css/listAutor.css">
+    <link rel="stylesheet" href="css/listBooks.css">
+    <link rel="stylesheet" href="css/addBooks.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+    <div id="container">
+        <nav id="navBar">
+            <h1 id="happy">IF BOOKS</h1>
+            <ul>
+                <!--href="#addAutor"-->
+                <li><a onclick="aparecer(0)">Adicionar Autor</a>
+                <li><a onclick="aparecer(1), requisicao()">Listar Autores</a></li>
+                <li><a onclick="aparecer(2), autoreSelect()">Adicionar Livros</a></li>
+                <li><a onclick="aparecer(3), listarLivros()">Listar Livros</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div id="addAutor" class="active">
+                <form action="" id="formAutor">
+                    <div class="form-item">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+                    </div>
+                    <div class="form-item">
+                        <label for="nacionalidade">Nacionalidade</label>
+                        <input type="text" name="nacionalidade" id="nacionalidade" placeholder="Digite sua nacionalidade">
+                    </div>
+                    <div class="form-item">
+                        <label for="dataNascimento">Data de nascimento</label>
+                        <input type="date" name="dataNascimento" id="dataNascimento" placeholder="Digite sua data de nascimento">
+                    </div>
+
+                    <input type="submit" value="Adicionar">
+                </form>
+            </div>
+
+            <div id="listAutor" class="hidden">
+            </div>
+
+            <div id="addBook" class="hidden">
+                <form action="" id="formLivro">
+                    <div class="form-item">
+                        <label for="nomeLivro">Nome</label>
+                        <input type="text" name="nome" id="nomeLivro" placeholder="Digite seu nome">
+                    </div>
+                    <div class="form-item">
+                        <label for="editora">Editora</label>
+                        <input type="text" name="editora" id="editora" placeholder="Digite sua editora">
+                    </div>
+                    <div class="form-item"> 
+                        <label for="resumo">Resumo</label>
+                        <input type="text" name="resumo" id="resumo" placeholder="Digite sua data de nascimento">
+                    </div>
+                    <div class="form-item">
+                        <label for="autor"></label>
+                        <select name="autor" id="autor">
+                            <option value="cauan">cauan</option>
+                            <option value="teste">teste</option>
+                        </select>
+                    </div>
+
+                    <input type="submit" value="Adicionar">
+                </form>
+            </div>
+
+            <div id="listBook" class="hidden">
+            
+            </div>
+        </main>
+        
+
+    </div>
+    <script src="js/modal.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/listAutores.js"></script>
+    <script src="js/listLivros.js"></script>
+    <script src="js/addLivro.js"></script>
+</body>
+</html>

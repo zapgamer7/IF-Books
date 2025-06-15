@@ -1,0 +1,44 @@
+#listBook{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 20px;
+}
+
+.card-book{
+    padding: 30px 15px;
+    gap: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .2);
+}
+
+.desc{
+    display: flex;
+    gap: 5px;
+}
+
+.desc p:first-of-type {
+    font-weight: bold;
+}
+
+.info{
+    color: #979797;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.info:hover{
+    color: #3250fd;
+}
+
+.card-book > .options{
+    display: flex;
+    margin-top: 20px;
+    justify-content: end;
+}
+
+.card-book > .options > .edit, .card-book > .options > .trash{
+    width: 10px;
+    height: 10px;
+    padding: 15px;
+}
