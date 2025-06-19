@@ -1,0 +1,44 @@
+#contact{
+    transition: .5s;
+}
+
+#contact > .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 100vh;
+}
+
+#formularioContato{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 20px;
+}
+
+#formularioContato > input{
+    padding: 10px 0;
+}
+
+#formularioContato > .form-item > input{
+    padding: 20px;
+}
+
+#socialMidias > .socialmidia{
+    display: flex;
+    gap: 10px;
+}
+
+#socialMidias > .socialmidia > img{
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+
+@media (max-width: 900px) {
+    #contact > .container {
+        flex-direction: column;
+        gap: 50px;
+    }
+}

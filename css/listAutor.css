@@ -5,6 +5,8 @@
     transition: .5s;
     z-index: 5;
     padding: 50px 50px;
+    overflow-y: scroll;
+    height: 100vh;
 }
 
 .card{
@@ -96,4 +98,11 @@
     background-color: #C3C1C1;
     border: 1px solid blue;
     padding: 5px 5px;
+}
+
+@media (max-width: 900px){
+    .card{
+        flex-direction: column;
+        height: 100px;
+    }
 }

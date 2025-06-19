@@ -11,8 +11,12 @@
     <link rel="stylesheet" href="css/listBooks.css">
     <link rel="stylesheet" href="css/addBooks.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
+    <!-- Cauan abreu de almeida -->
+    <!-- BV3044092 -->
+    <!-- Frontend do ifbooks -->
     <div id="container">
         <nav id="navBar">
             <h1 id="happy">IF BOOKS</h1>
@@ -22,6 +26,7 @@
                 <li><a onclick="aparecer(1), requisicao()">Listar Autores</a></li>
                 <li><a onclick="aparecer(2), autoreSelect()">Adicionar Livros</a></li>
                 <li><a onclick="aparecer(3), listarLivros()">Listar Livros</a></li>
+                <li><a onclick="aparecer(4)">Contatos</a></li>
             </ul>
         </nav>
 
@@ -63,10 +68,12 @@
                         <input type="text" name="resumo" id="resumo" placeholder="Digite sua data de nascimento">
                     </div>
                     <div class="form-item">
+                        <label for="dataPublicacao">Data de publicação</label>
+                        <input type="date" name="dataPublicacao" id="dataPublicacao" placeholder="Digite sua data de nascimento">
+                    </div>
+                    <div class="form-item">
                         <label for="autor"></label>
                         <select name="autor" id="autor">
-                            <option value="cauan">cauan</option>
-                            <option value="teste">teste</option>
                         </select>
                     </div>
 
@@ -76,6 +83,39 @@
 
             <div id="listBook" class="hidden">
             
+            </div>
+
+            <div id="contact" class="hidden">
+                <div class="container">
+                    <div id="socialMidias">
+                        <h2>Midias Sociais</h2>
+                        <div class="socialmidia">
+                            <img src="instagram.svg" alt="instagram logo">
+                            <a href="https://www.instagram.com/cauan_almeida7.pdf?igsh=ODR5ZXRmam93MGNx" target="_blank">Instagram: cauan_almeida7.pdf</a>
+                        </div>
+                        <div class="socialmidia">
+                            <img src="email.svg" alt="instagram logo">
+                            <p>Email: cauan358@gmail.com</p>
+                        </div>
+                    </div>
+                    <form id="formularioContato">
+                        <legend style="text-align: center; font-size: 25px; margin-bottom: 20px;">Formulário de contato</legend>
+                        <div class="form-item">
+                            <label for="">Nome:</label>
+                            <input type="text" name="" id="">
+                        </div>
+                        <div class="form-item">
+                            <label for="">Email:</label>
+                            <input type="text" name="" id="">
+                        </div>
+                        <div class="form-item">
+                            <label for="">Mensagem:</label>
+                            <input type="text" name="" id="">
+                        </div>
+
+                        <input type="submit" value="Contate-nos">
+                    </form>
+                </div>
             </div>
         </main>
         

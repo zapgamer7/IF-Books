@@ -2,7 +2,8 @@ const crudAreas = [
     document.querySelector("#addAutor"),
     document.querySelector("#listAutor"),
     document.querySelector("#addBook"),
-    document.querySelector("#listBook")
+    document.querySelector("#listBook"),
+    document.querySelector("#contact")
   ];
   
   let active = 0;

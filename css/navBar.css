@@ -20,6 +20,7 @@ main{
 #navBar{
     width: 20vw;
     height: 100vh;
+    min-width: 200px;
     background-color: #9f38ff;
 }
 

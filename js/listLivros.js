@@ -4,20 +4,26 @@ async function listarLivros(){
     let result = await requisicao.json()
     listArea.innerHTML = ""
 
+    console.log(result)
+
     result.forEach(e => {
         listArea.innerHTML += `
             <div class="card-book">
                 <div class="desc">
-                    <p>nome:</p>
+                    <p>Nome:</p>
                     <p>${e.nome}</p>
                 </div>
                 <div class="desc">
-                    <p>editora:</p>
+                    <p>Editora:</p>
                     <p>${e.editora}</p>
                 </div>
                 <div class="desc">
-                    <p>nome do autor:</p>
+                    <p>Nome do autor:</p>
                     <p>${e.autor.nome}</p>
+                </div>
+                <div class="desc">
+                    <p>Data de publicação</p>
+                    <p>${e.dataPublicacao}</p>
                 </div>
                 <p class="info" onclick="listarLivro(${e.id})">clique para ver mais informações</p>
 
@@ -53,6 +59,10 @@ async function listarLivro(id) {
         <p>${livro.resumo}</p>
     </div>
     <div class="desc">
+        <p>Data de publicação:</p>
+        <p>${livro.dataPublicacao}</p>
+    </div>
+    <div class="desc">
         <p>nome do autor:</p>
         <p>${livro.autor.nome}</p>
     </div>
@@ -82,7 +92,7 @@ async function deleteLivro(id) {
     listarLivros()
 }
 
-async function editarLivro(id, nome, editora, resumo, id_autor){
+async function editarLivro(id, nome, editora, resumo, id_autor, dataPublicacao){
     let alteracao = await fetch(`http://localhost:8080/livros/${id}`, {
         method: "PUT",
         headers: {
@@ -92,6 +102,7 @@ async function editarLivro(id, nome, editora, resumo, id_autor){
             nome: nome,
             editora: editora,
             resumo: resumo,
+            dataPublicacao: dataPublicacao,
             autor: {
                 id: id_autor
             }
@@ -128,6 +139,10 @@ async function formEditLivro(id){
                 <input type="text" name="resumo" id="resumoModal" value="${livro.resumo}" placeholder="Digite sua data de nascimento">
             </div>
             <div class="form-item">
+                <label for="dataPublicacaoModal">Data de publicação:</label>
+                <input type="date" name="dataPublicacao" id="dataPublicacaoModal" value="${livro.dataPublicacao}" placeholder="Digite sua data de nascimento">
+            </div>
+            <div class="form-item">
                 <label for="autor-modal"></label>
                 <select name="autor" id="autor-modal">
                 </select>
@@ -148,8 +163,15 @@ async function formEditLivro(id){
         let editora = document.getElementById("editoraModal").value
         let resumo = document.getElementById("resumoModal").value
         let autorID = document.getElementById("autor-modal").value
+        let dataPublicacaoModal = document.getElementById("dataPublicacaoModal").value
 
-        editarLivro(id, nome, editora, resumo, autorID)
+        const [ano, mes, dia] = dataPublicacaoModal.split("-");
+        const data = new Date(ano, mes - 1, dia);
+
+        const dataFormatada = new Intl.DateTimeFormat("pt-BR").format(data);
+
+
+        editarLivro(id, nome, editora, resumo, autorID, dataFormatada)
     })
 }
 
